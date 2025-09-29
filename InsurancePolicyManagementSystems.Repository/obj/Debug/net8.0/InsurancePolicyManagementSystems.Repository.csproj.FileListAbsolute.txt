@@ -1,0 +1,16 @@
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.csproj.AssemblyReference.cache
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\bin\Debug\net8.0\InsurancePolicyManagementSystems.Repository.deps.json
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\bin\Debug\net8.0\InsurancePolicyManagementSystems.Repository.runtimeconfig.json
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\bin\Debug\net8.0\InsurancePolicyManagementSystems.Repository.dll
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\bin\Debug\net8.0\InsurancePolicyManagementSystems.Repository.pdb
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.csproj.AssemblyReference.cache
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.AssemblyInfoInputs.cache
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.AssemblyInfo.cs
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.csproj.CoreCompileInputs.cache
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.dll
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\refint\InsurancePolicyManagementSystems.Repository.dll
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.pdb
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\InsurancePolicyManagementSystems.Repository.genruntimeconfig.cache
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Repository\obj\Debug\net8.0\ref\InsurancePolicyManagementSystems.Repository.dll

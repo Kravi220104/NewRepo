@@ -1,0 +1,172 @@
+﻿@model InsurancePolicyManagementSystems.Service.DTO.RegisterForPoliciesDTO
+
+@{
+    ViewData["Title"] = "Register for Policies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts {
+    <script>
+        function toggleForm() {
+            var type = document.getElementById("PolicyType").value;
+            document.getElementById("selfForm").style.display = type === "Self" ? "block" : "none";
+            document.getElementById("groupForm").style.display = type === "Group" ? "block" : "none";
+        }
+
+        function renderGroupMembers() {
+            var count = parseInt(document.getElementById("NumberOfMembers").value);
+            var container = document.getElementById("groupMembersContainer");
+            container.innerHTML = "";
+
+            for (let i = 1; i <= count; i++) {
+                container.innerHTML += `
+                    <h5 class="mt-4">Member ${i} Details</h5>
+                    <div class="mb-3"><label>Name</label><input name="Members[${i - 1}].Name" class="form-control" /></div>
+                    <div class="mb-3"><label>Address</label><input name="Members[${i - 1}].Address" class="form-control" /></div>
+                    <div class="mb-3"><label>Aadhar Number</label><input name="Members[${i - 1}].Aadhar" class="form-control" /></div>
+                    <div class="mb-3"><label>Date of Birth</label><input name="Members[${i - 1}].DateOfBirth" type="date" class="form-control" placeholder="DD-MM-YYYY" /></div>
+                    <div class="mb-3"><label>Occupation</label>
+                        <select name="Members[${i - 1}].Occupation" class="form-select">
+                            <option value="">Select Occupation</option>
+                            <option>Salaried</option>
+                            <option>SelfEmployed</option>
+                        </select>
+                    </div>
+                    <div class="mb-3"><label>Annual Income</label>
+                        <select name="Members[${i - 1}].AnnualIncome" class="form-select">
+                            <option value="">Select Annual Income</option>
+                            <option>₹3L</option>
+                            <option>₹5L</option>
+                            <option>₹10L</option>
+                            <option>₹15L</option>
+                            <option>₹20L</option>
+                            <option>Above ₹25L</option>
+                        </select>
+                    </div>
+                    <div class="mb-3"><label>Relation</label>
+                        <select name="Members[${i - 1}].Relation" class="form-select">
+                            <option value="">Select Relation</option>
+                            <option>Father</option>
+                            <option>Mother</option>
+                            <option>Sibling</option>
+                        </select>
+                    </div>
+                    <div class="mb-3"><label>Account Holder Name</label><input name="Members[${i - 1}].AccountHolderName" class="form-control" /></div>
+                    <div class="mb-3"><label>Account Number</label><input name="Members[${i - 1}].AccountNumber" class="form-control" /></div>
+                    <div class="mb-3"><label>IFSC Code</label><input name="Members[${i - 1}].IFSCCode" class="form-control" /></div>
+                `;
+            }
+        }
+    </script>
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Register for Policies</h2>
+
+    <form asp-action="RegisterForPolicies" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="PolicyId" />
+        <input type="hidden" asp-for="PolicyName" />
+        <input type="hidden" asp-for="PlanType" />
+
+        <div class="mb-3">
+            <label class="form-label">Policy Type</label>
+            <select asp-for="PolicyType" class="form-select" onchange="toggleForm()">
+                <option value="">-- Select --</option>
+                <option value="Self">Self</option>
+                <option value="Group">Group</option>
+            </select>
+        </div>
+
+        <!-- Self Form -->
+        <div id="selfForm" style="display:none;">
+            <h5 class="mt-4">Self Policy Details</h5>
+            <div class="mb-3"><label>Full Name</label><input asp-for="Fullname" class="form-control" /></div>
+            <div class="mb-3"><label>Phone Number</label><input asp-for="PhoneNumber" class="form-control" /></div>
+            <div class="mb-3"><label>Plan Type</label><input asp-for="PlanType" class="form-control" readonly /></div>
+            <div class="mb-3"><label>Date of Birth</label><input asp-for="DateOfBirth" type="date" class="form-control" placeholder="DD-MM-YYYY" /></div>
+            <div class="mb-3">
+                <label>Gender</label>
+                <select asp-for="Gender" class="form-select">
+                    <option value="">--Select Gender--</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Occupation</label>
+                <select asp-for="Occupation" class="form-select">
+                    <option value="">--Select Occupation--</option>
+                    <option>Salaried</option>
+                    <option>SelfEmployed</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label>Annual Income</label>
+                <select asp-for="AnnualIncome" class="form-select">
+                    <option value="">--Select Annual Income--</option>
+                    <option value="3L-5L">₹3L–₹5L</option>
+                    <option value="5L-10L">₹5L–₹10L</option>
+                    <option value="10L-15L">₹10L–₹15L</option>
+                    <option value="15L-20L">₹15L–₹20L</option>
+                    <option value="20L-25L">₹20L–₹25L</option>
+                    <option value="25L+">Above ₹25L</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="tobaccoUse">Do you smoke or chew tobacco?</label><br>
+                <input type="radio" id="tobaccoYes" name="tobaccoUse" value="Yes">
+                <label for="tobaccoYes">Yes</label><br>
+                <input type="radio" id="tobaccoNo" name="tobaccoUse" value="No">
+                <label for="tobaccoNo">No</label>
+            </div>
+
+
+            <div class="mb-3">
+                <label>Aadhaar Number</label>
+                <input asp-for="AaadhaarNumber" class="form-control" placeholder="Enter your 12-digit Aadhaar number" />
+            </div>
+
+            <h5 class="mt-4">Bank Details</h5>
+
+            <div class="mb-3">
+                <label>Account Holder Name</label>
+                <input asp-for="AccountHolderName" class="form-control" placeholder="Enter account holder's full name" />
+            </div>
+
+            <div class="mb-3">
+                <label>Account Number</label>
+                <input asp-for="AccountNumber" class="form-control" placeholder="Enter your bank account number" />
+            </div>
+
+            <div class="mb-3">
+                <label>IFSC Code</label>
+                <input asp-for="IFSCCode" class="form-control" placeholder="Enter IFSC code (e.g., SBIN0001234)" />
+            </div>
+
+            <div class="mb-3">
+                <label>Bank Name</label>
+                <input asp-for="BankName" class="form-control" placeholder="(e.g.,Kotak Mahindra Bank)" />
+            </div>
+        </div>
+
+        <!-- Group Form -->
+        <div id="groupForm" style="display:none;">
+            <h5 class="mt-4">Group Policy Details</h5>
+            <div class="mb-3">
+                <label>Number of Members</label>
+                <select asp-for="NumberOfMembers" class="form-select" onchange="renderGroupMembers()">
+                    <option value="">Select No. of Members</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div id="groupMembersContainer"></div>
+        </div>
+
+        <input type="submit" value="Submit Registration" class="btn btn-success w-100 mt-4" />
+    </form>
+</div>
+

@@ -1,0 +1,252 @@
+﻿@* CORRECTED FILE: Views/Home/Index.cshtml *@
+
+@{
+    ViewData["Title"] = "Home - Secure Your Future";
+    Layout = "_Layout";
+}
+
+<style>
+    /* CSS Variables for Easy Theming */
+    :root {
+        --color-primary: #004d99; /* Darker Blue */
+        --color-secondary: #28a745; /* Green */
+        --color-background: #f8f9fa;
+        --color-text-dark: #333;
+        --color-text-light: #fff;
+    }
+
+    /* Base Styles */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif; /* Changed Font for a modern feel */
+        background-color: var(--color-background);
+        overflow-x: hidden;
+    }
+
+    /* 1. Hero Section with Animated Background */
+    .hero-section {
+        /* Animated Gradient Background */
+        background: linear-gradient(135deg, #004d99, #003366, #001a33); /* Initial Gradient */
+        background-size: 400% 400%; /* Make the gradient larger than the viewport */
+        animation: gradientFlow 15s ease infinite; /* Apply the animation */
+
+        position: relative;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    /* Keep the overlay */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.2); /* Very light, subtle dark tint */
+    }
+
+
+    /* 2. Welcome/CTA Box Styles */
+    .welcome-box {
+        position: relative;
+        z-index: 10;
+        background-color: rgba(255, 255, 255, 0.98);
+        padding: 60px;
+        border-radius: 15px; /* Softer edges */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        max-width: 750px;
+        animation: slideUp 0.8s ease-out forwards; /* More noticeable animation */
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+        .welcome-box h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+            font-weight: 800;
+            letter-spacing: -1px; /* Tighter for professionalism */
+        }
+
+        .welcome-box p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--color-text-dark);
+            font-weight: 300;
+        }
+
+        .welcome-box .cta-buttons a {
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+            .welcome-box .cta-buttons a.login {
+                background-color: var(--color-primary);
+                color: var(--color-text-light);
+                box-shadow: 0 5px 15px rgba(0, 77, 153, 0.4);
+            }
+
+            .welcome-box .cta-buttons a.register {
+                background-color: var(--color-secondary);
+                color: var(--color-text-light);
+                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+            }
+
+            .welcome-box .cta-buttons a:hover {
+                transform: scale(1.05); /* Slight growth on hover */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+    /* 3. Features Section Styles */
+    .features-section {
+        padding: 100px 20px;
+        text-align: center;
+        background: linear-gradient(to right, #ffffff, #f0f0f0); /* Subtle background gradient */
+    }
+
+        .features-section h2 {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+    .feature-card {
+        padding: 35px;
+        background: var(--color-text-light);
+        border-radius: 10px;
+        border-bottom: 5px solid var(--color-secondary); /* Highlight border */
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 30px;
+        transition: all 0.4s;
+        height: 100%; /* Ensures cards are equal height */
+    }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-bottom-color: var(--color-primary); /* Border color shift on hover */
+        }
+
+        .feature-card i {
+            font-size: 3.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            background: #e6f0ff; /* Light circle behind icon */
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .feature-card h4 {
+            color: var(--color-text-dark);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+    /* Animation Keyframes */
+    @@keyframes gradientFlow {
+        0%
+
+    {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%; /* Moves gradient across the screen */
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+    }
+
+    /* Animation Keyframes for the welcome box */
+    @@keyframes slideUp {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
+</style>
+
+<div class="hero-section">
+    <div class="overlay"></div>
+    <div class="welcome-box">
+        <h1>Digital Insurance Management. Seamlessly Secure.</h1>
+        <p>Your dedicated platform for managing policies, submitting claims, and receiving instant status updates—all powered by transparency and efficiency.</p>
+        <div class="cta-buttons">
+            <a href="/Customer/Login" class="login">
+                <i class="bi bi-box-arrow-in-right me-2"></i> Log In
+            </a>
+            <a href="/Customer/Register" class="register">
+                <i class="bi bi-person-plus-fill me-2"></i> Register Free
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+<div class="features-section">
+    <div class="container">
+        <h2>Why Choose Our Platform?</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <div class="col">
+                <div class="feature-card">
+                    <i class="bi bi-shield-lock"></i>
+                    <h4>Secure Policy Management</h4>
+                    <p>Apply for, view, and manage all your active and pending policies from one encrypted dashboard.</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="feature-card">
+                    <i class="bi bi-lightning-charge"></i>
+                    <h4>Accelerated Claims Process</h4>
+                    <p>File a claim instantly and receive rapid status updates from our administrative review team.</p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="feature-card">
+                    <i class="bi bi-eye"></i>
+                    <h4>Full Transparency</h4>
+                    <p>See exactly when your policy or claim is approved, who reviewed it, and the final decision details.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container text-center py-5">
+    <div class="p-5 bg-white shadow rounded-3">
+        <h3 class="mb-4 text-dark">Ready to take control of your insurance?</h3>
+        <a href="/Customer/Register" class="btn btn-lg register" style="min-width: 250px;">
+            Join Our Growing Customer Base Today!
+        </a>
+    </div>
+</div>
+
+@section Scripts {
+}

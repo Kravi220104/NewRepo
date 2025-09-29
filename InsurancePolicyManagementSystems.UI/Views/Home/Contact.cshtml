@@ -1,0 +1,149 @@
+﻿@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<style>
+    /* Inherit root variables and base body styles from Index.cshtml */
+    :root {
+        --color-primary: #004d99;
+        --color-secondary: #28a745;
+        --color-background: #f8f9fa;
+        --color-text-dark: #333;
+    }
+
+    .contact-section {
+        padding: 80px 20px;
+        background-color: #ffffff; /* White background for contrast */
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+        .contact-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+    .contact-card {
+        padding: 30px;
+        background: var(--color-background);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        height: 100%;
+    }
+
+        .contact-card i {
+            font-size: 1.8rem;
+            color: var(--color-secondary);
+            margin-right: 15px;
+        }
+
+    .info-list li {
+        list-style: none;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+        .info-list li strong {
+            color: var(--color-primary);
+        }
+
+    .form-control:focus {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 0.25rem rgba(0, 77, 153, 0.25);
+    }
+
+    .btn-send {
+        background-color: var(--color-secondary);
+        border-color: var(--color-secondary);
+        padding: 10px 30px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+
+        .btn-send:hover {
+            background-color: #218838; /* Darker green */
+            border-color: #218838;
+        }
+</style>
+
+<div class="contact-section">
+    <div class="container">
+        <div class="contact-header">
+            <h1>Get In Touch</h1>
+            <p class="lead text-muted mt-3">We're here to help with your inquiries, support needs, and feedback.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="contact-card">
+                    <h3 class="mb-4 text-dark">Send Us a Message</h3>
+                    <form action="#" method="post">
+                        @* Replace '#' with your actual POST endpoint *@
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-send text-white mt-3">
+                            <i class="bi bi-send me-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="contact-card">
+                    <h3 class="mb-4 text-dark">Contact Information</h3>
+                    <ul class="info-list p-0">
+                        <li>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <div>
+                                <strong>Address:</strong><br>
+                                123 Digital Square, Insurance Tower,<br>
+                                Financial District, New Delhi, India
+                            </div>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope-fill"></i>
+                            <div>
+                                <strong>Email:</strong><br>
+                                <a href="mailto:support@yourdomain.com">support@yourdomain.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill"></i>
+                            <div>
+                                <strong>Phone:</strong><br>
+                                +91 98765 43210
+                            </div>
+                        </li>
+                        <li>
+                            <i class="bi bi-clock-fill"></i>
+                            <div>
+                                <strong>Hours:</strong><br>
+                                Mon - Fri: 9:00 AM - 5:00 PM IST
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

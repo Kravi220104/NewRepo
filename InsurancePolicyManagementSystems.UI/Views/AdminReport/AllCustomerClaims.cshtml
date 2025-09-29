@@ -1,0 +1,19 @@
+﻿@* File: Views/AdminReport/AllCustomerPolicies.cshtml *@
+@model List<InsurancePolicyManagementSystems.Service.DTO.AllPolicyRegistrationDTO>
+
+@{
+    ViewData["Title"] = "All Filed Claims By customer";
+}
+
+<h2 class="text-center mb-4 text-warning">
+    <i class="bi bi-list-check me-2"></i> All Customers Filed Claims
+</h2>
+
+<a asp-controller="AdminReport" asp-action="Index" class="btn btn-secondary mb-3">
+    <i class="bi bi-arrow-left"></i> Back to Reports
+</a>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">All claims have been reviewed.</div>
+}

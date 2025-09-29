@@ -1,0 +1,75 @@
+﻿@* File: Views/AdminReport/Index.cshtml *@
+@{
+    ViewData["Title"] = "Admin Reports Dashboard";
+}
+
+<style>
+    .admin-card {
+        border-radius: 1rem;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        height: 220px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+        .admin-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-icon-admin {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        color: inherit;
+    }
+
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+</style>
+
+<h2 class="text-center mb-5 text-dark">
+    <i class="bi bi-person-workspace me-2"></i> Administration Reporting Hub
+</h2>
+
+<div class="row justify-content-center g-4">
+
+    @* === CARD 1: ALL CUSTOMER LIST === *@
+    <div class="col-md-6 col-lg-4">
+        <a asp-controller="Admin" asp-action="CustomerList" class="card-link">
+            <div class="card admin-card bg-info text-white shadow">
+                <i class="bi bi-people-fill card-icon-admin"></i>
+                <h5 class="card-title">All Customer List</h5>
+                <p class="card-text text-white-50">Manage and view registration details for all customers.</p>
+            </div>
+        </a>
+    </div>
+
+    @* === CARD 2: ALL CUSTOMER POLICIES === *@
+    <div class="col-md-6 col-lg-4">
+        <a asp-controller="AdminReport" asp-action="AllCustomerPolicies" class="card-link">
+            <div class="card admin-card bg-warning text-dark shadow">
+                <i class="bi bi-file-earmark-spreadsheet-fill card-icon-admin"></i>
+                <h5 class="card-title">All Applied Policies</h5>
+                <p class="card-text text-dark-50">Review and approve policy applications submitted by all users.</p>
+            </div>
+        </a>
+    </div>
+
+    @* === CARD 3: ALL CUSTOMER CLAIMS === *@
+    <div class="col-md-6 col-lg-4">
+        <a asp-controller="AdminReport" asp-action="AllCustomerClaims" class="card-link">
+            <div class="card admin-card bg-danger text-white shadow">
+                <i class="bi bi-headset card-icon-admin"></i>
+                <h5 class="card-title">All Applied Claims</h5>
+                <p class="card-text text-white-50">Process and track all insurance claims across all customers.</p>
+            </div>
+        </a>
+    </div>
+
+</div>

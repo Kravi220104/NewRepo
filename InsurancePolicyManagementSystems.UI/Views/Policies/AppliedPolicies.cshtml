@@ -1,0 +1,91 @@
+﻿
+@model List<InsurancePolicyManagementSystems.Service.DTO.AppliedPolicyDTO>
+
+@{
+    ViewData["Title"] = "My Applied Policies";
+}
+
+<h2 class="text-center text-primary mb-4">My Applied Policies</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <div class= "alert alert-info text-center" >
+          You have not applied for any policy yet.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Policy Name</th>
+                <th>Plan Type</th>
+                <th>Application Type</th>
+                <th>Status</th>
+                <th>Details</th>
+                <th>Application Date</th>
+                <th>Actions</th> @* <--- NEW COLUMN *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.PolicyName</td>
+                    <td>@item.PlanType</td>
+                    <td>@item.PolicyType</td>
+                    <td>
+                        @{
+                            // Status Badge Logic (unchanged)
+                            string badgeClass = item.Status switch
+                            {
+                                "Approved" => "bg-success",
+                                "Rejected" => "bg-danger",
+                                _ => "bg-warning text-dark"
+                            };
+                        }
+                        <span class="badge @badgeClass">@item.Status</span>
+                    </td>
+                    <td>
+                        @if (item.Status == "Rejected" && !string.IsNullOrEmpty(item.RejectionReason))
+                        {
+                            <span class="text-danger fw-bold">Rejected:</span> 
+                            @item.RejectionReason
+                        }
+                        else
+                        {
+                            <span>-</span>
+                        }
+                    </td>
+                    <td>@item.ApplicationDate.ToShortDateString()</td>
+
+                    <td>
+                        @if (item.Status == "Approved")
+                        {
+                            <a asp-controller="Claim"
+                               asp-action="FileClaim"
+                               asp-route-policyRegistrationId="@item.Id"
+                               class="btn btn-sm btn-success">
+                                File Claim
+                            </a>
+                        }
+                        else if (item.Status == "Pending")
+                        {
+                            <button class="btn btn-sm btn-outline-secondary" disabled>Awaiting Approval</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-sm btn-outline-danger" disabled>Not Claimable</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="AvailablePolicies" class="btn btn-primary mt-3">Apply for New Policy</a>
+
+<a asp-controller="Claim" asp-action="MyClaims" class="btn btn-info mt-3 ms-2">View Filed Claims</a>

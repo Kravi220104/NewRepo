@@ -1,0 +1,65 @@
+﻿@model InsurancePolicyManagementSystems.Service.DTO.UpdateProfileDTO
+
+@{
+    ViewData["Title"] = "Update Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Edit Your Profile</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="successAlert" class="alert alert-success text-center">
+            <strong>✅ @TempData["SuccessMessage"]</strong>
+
+        </div>
+
+        <script>
+            setTimeout(function () {
+                var alertBox = document.getElementById("successAlert");
+                if (alertBox) {
+                    alertBox.style.transition = "opacity 1s ease-out";
+                    alertBox.style.opacity = "0";
+                    setTimeout(function () {
+                        alertBox.style.display = "none";
+                    }, 1000); // Wait for fade-out to complete
+                }
+            }, 15000); // 15 seconds
+        </script>
+    }
+
+    <form asp-action="UpdateProfile" method="post">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Fullname" class="form-label"></label>
+            <input asp-for="Fullname" class="form-control" />
+            <span asp-validation-for="Fullname" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Phone" class="form-label"></label>
+            <input asp-for="Phone" class="form-control" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label"></label>
+            <input asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <input type="submit" value="Update Profile" class="btn btn-success w-25 p-2" />
+        <p class="mt-3">
+            <a asp-controller="Customer" asp-action="CustomerDashboard" class="text-decoration-none btn btn-success w-25 p-2">Back to Dashboard</a>
+        </p>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

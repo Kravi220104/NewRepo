@@ -1,0 +1,225 @@
+﻿@model InsurancePolicyManagementSystems.Service.DTO.CustomerListDTO
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Customer Dashboard";
+}
+
+@section Styles {
+    <style>
+        /* CSS Variables (Assuming these are defined in your main stylesheet,
+                   but defined here for completeness and testing) */
+        :root {
+            --color-primary: #004d99; /* Deep Blue */
+            --color-secondary: #28a745; /* Green */
+            --color-light-blue: #e6f0ff; /* Light shade of primary */
+            --color-light-green: #e9f7eb; /* Light shade of secondary */
+        }
+
+        body {
+            background-color: var(--color-background, #f8f9fa); /* Use theme background */
+        }
+
+        /* Dashboard Title */
+        .dashboard-title {
+            font-size: 2.8rem;
+            color: var(--color-primary);
+            font-weight: 800;
+        }
+
+        /* The Card Container Styling */
+        .dashboard-card {
+            height: 300px; /* Slight reduction for better balance */
+            max-width: 320px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            border: none; /* Remove default card border */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .dashboard-card:hover {
+                transform: translateY(-8px); /* More noticeable lift on hover */
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            /* Use a solid background circle for the icon */
+            padding: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #777;
+        }
+
+        /* --------------------------------- */
+        /* Color Overrides for Specific Cards */
+        /* --------------------------------- */
+
+        /* 1. Profile Card (Primary Theme Color) */
+        .card-primary .card-icon {
+            color: var(--color-primary);
+            background-color: var(--color-light-blue);
+        }
+
+        .card-primary .card-title {
+            color: var(--color-primary);
+        }
+
+        .card-primary .btn {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+            .card-primary .btn:hover {
+                background-color: var(--color-primary);
+                color: white;
+            }
+
+        /* 2. Policies Card (Secondary/Green Theme Color) */
+        .card-secondary .card-icon {
+            color: var(--color-secondary);
+            background-color: var(--color-light-green);
+        }
+
+        .card-secondary .card-title {
+            color: var(--color-secondary);
+        }
+
+        .card-secondary .btn {
+            border-color: var(--color-secondary);
+            color: var(--color-secondary);
+        }
+
+            .card-secondary .btn:hover {
+                background-color: var(--color-secondary);
+                color: white;
+            }
+
+        /* 3. Claims Card (Slightly darker primary for distinction) */
+        .card-claims .card-icon {
+            color: #007bff;
+            background-color: #dbe9ff;
+        }
+
+        .card-claims .card-title {
+            color: #007bff;
+        }
+
+        .card-claims .btn {
+            border-color: #007bff;
+            color: #007bff;
+        }
+
+            .card-claims .btn:hover {
+                background-color: #007bff;
+                color: white;
+            }
+
+        /* 4. Reports Card (Darker secondary/Green for distinction) */
+        .card-reports .card-icon {
+            color: #159333;
+            background-color: #e0f2e0;
+        }
+
+        .card-reports .card-title {
+            color: #159333;
+        }
+
+        .card-reports .btn {
+            border-color: #159333;
+            color: #159333;
+        }
+
+            .card-reports .btn:hover {
+                background-color: #159333;
+                color: white;
+            }
+    </style>
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5 dashboard-title">Welcome, @Model.Fullname!</h1>
+
+    <div class="row justify-content-center mb-5">
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-primary">
+                <div class="card-body text-center">
+                    <div>
+                        <i class="bi bi-person-circle card-icon mb-3"></i>
+                        <h5 class="card-title">My Profile</h5>
+                        <p class="card-text">View and securely update your personal details and contact information.</p>
+                    </div>
+                    <a asp-controller="Customer" asp-action="ManageProfile" class="btn btn-outline-primary mt-3">Manage Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-secondary">
+                <div class="card-body text-center">
+                    <div>
+                        <i class="bi bi-file-earmark-medical card-icon mb-3"></i>
+                        <h5 class="card-title">View Policies</h5>
+                        <p class="card-text">Browse available policies and submit new applications instantly.</p>
+                    </div>
+                    <a asp-controller="Policies" asp-action="AvailablePolicies" class="btn btn-outline-secondary mt-3">View Policies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-claims">
+                <div class="card-body text-center">
+                    <div>
+                        <i class="bi bi-shield-lock card-icon mb-3"></i>
+                        <h5 class="card-title">Manage Claims</h5>
+                        <p class="card-text">Submit new claims and track the real-time status of all previous submissions.</p>
+                    </div>
+                    <a asp-controller="Policies" asp-action="AppliedPolicies" class="btn btn-outline-info mt-3">Manage Claims</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-reports">
+                <div class="card-body text-center">
+                    <div>
+                        <i class="bi bi-bar-chart-line card-icon mb-3"></i>
+                        <h5 class="card-title">My Reports</h5>
+                        <p class="card-text">Access your policy history, financial statements, and detailed claim reports.</p>
+                    </div>
+                    <a asp-controller="Report" asp-action="Index" class="btn btn-outline-warning mt-3">View Reports</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+}

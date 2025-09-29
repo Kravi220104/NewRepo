@@ -1,0 +1,45 @@
+﻿@using InsurancePolicyManagementSystems.Service.DTO
+@model List<CreatePoliciesDTO>
+
+@{
+    ViewData["Title"] = "Available Policies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<h2 class="text-center text-primary mb-4">Available Policies</h2>
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var policy in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@policy.PolicyName</h5>
+                        <p class="card-text">
+                            <strong>Plan:</strong> @policy.PlanType<br />
+                            <strong>Duration:</strong> @policy.PolicyDuration Years<br />
+                            <strong>Description:</strong> ₹@policy.PolicyDescription<br />
+                           
+                        </p>
+                    </div>
+                    <div class="card-footer text-end">
+                        @* <a asp-controller="Policies" asp-action="RegisterForPolicies" class="btn btn-primary">
+                            Apply
+                        </a> *@
+                        <a asp-controller="Policies" asp-action="RegisterForPolicies" asp-route-id="@policy.Id" class="btn btn-primary">
+                            Apply
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

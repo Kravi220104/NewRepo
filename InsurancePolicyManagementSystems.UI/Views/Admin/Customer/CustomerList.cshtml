@@ -1,0 +1,139 @@
+﻿@using InsurancePolicyManagementSystems.Service.DTO
+@model List<CustomerListDTO>
+
+@{
+    ViewData["Title"] = "Customer List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var searchedCustomer = ViewBag.SearchedUser as CustomerListDTO;
+    var customerNotFound = ViewBag.UserNotFound as bool? ?? false;
+    var adminEmail = "admin@insurance.com";
+}
+
+@section Scripts {
+    <script>
+        function confirmDeactivation(email) {
+            if (confirm("Are you sure you want to deactivate this customer?")) {
+                window.location.href = '/Admin/Deactivate?email=' + encodeURIComponent(email);
+            }
+        }
+
+        function confirmActivation(email) {
+            if (confirm("Are you sure you want to activate this customer?")) {
+                window.location.href = '/Admin/Activate?email=' + encodeURIComponent(email);
+            }
+        }
+    </script>
+}
+
+<div class="container mt-5 customer-list-page">
+    <h2 class="text-center mb-4">Registered Customers</h2>
+
+    <form method="get" asp-action="CustomerList" class="mb-4 search-form">
+        <div class="input-group">
+            <input type="text" name="searchEmail" class="form-control" placeholder="Search by Email" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+
+    @if (customerNotFound)
+    {
+        <div class="alert alert-danger">Customer not found with the provided email.</div>
+    }
+
+    @if (searchedCustomer != null && searchedCustomer.Email.ToLower() != adminEmail.ToLower())
+    {
+        <h5 class="text-success">Search Result:</h5>
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered table-striped customer-table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@searchedCustomer.Fullname</td>
+                        <td>@searchedCustomer.Email</td>
+                        <td>@searchedCustomer.Phone</td>
+                        <td>@searchedCustomer.Address</td>
+                        <td>
+                            @if (searchedCustomer.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inactive</span>
+                            }
+                        </td>
+                        <td>
+                         
+                            @if (searchedCustomer.IsActive)
+                            {
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeactivation('@searchedCustomer.Email')">Deactivate</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-success btn-sm" onclick="confirmActivation('@searchedCustomer.Email')">Activate</button>
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <h5>All Customers:</h5>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped customer-table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Where(c => c.Email.ToLower() != adminEmail.ToLower()))
+                {
+                    <tr>
+                        <td>@customer.Fullname</td>
+                        <td>@customer.Email</td>
+                        <td>@customer.Phone</td>
+                        <td>@customer.Address</td>
+                        <td>
+                            @if (customer.IsActive)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Inactive</span>
+                            }
+                        </td>
+                        <td>
+                          
+                            @if (customer.IsActive)
+                            {
+                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDeactivation('@customer.Email')">Deactivate</button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-success btn-sm" onclick="confirmActivation('@customer.Email')">Activate</button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

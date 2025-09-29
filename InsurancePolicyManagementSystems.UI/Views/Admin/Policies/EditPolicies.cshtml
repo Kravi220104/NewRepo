@@ -1,0 +1,57 @@
+﻿@model InsurancePolicyManagementSystems.Service.DTO.CreatePoliciesDTO
+
+@{
+
+    ViewData["Title"] = "Edit Policy";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2 class="text-center mb-4 text-warning">✏️ Edit Policy</h2>
+
+<div class="container mt-4">
+    <form asp-action="EditPolicies" asp-controller="Admin" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="PolicyName" class="form-label">Policy Name</label>
+            <input asp-for="PolicyName" class="form-control" />
+            <span asp-validation-for="PolicyName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PolicyDuration" class="form-label">Policy Duration (Years)</label>
+            <input asp-for="PolicyDuration" class="form-control" type="number" min="1" />
+            <span asp-validation-for="PolicyDuration" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PlanType" class="form-label">Plan Type</label>
+            <select asp-for="PlanType" class="form-select">
+                <option value="Basic">Basic</option>
+                <option value="Standard">Standard</option>
+                <option value="Premium">Premium</option>
+            </select>
+            <span asp-validation-for="PlanType" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PolicyDescription" class="form-label">Sum Assurance (₹)</label>
+            <input asp-for="PolicyDescription" class="form-control"  />
+            <span asp-validation-for="PolicyDescription" class="text-danger"></span>
+        </div>
+
+       
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-warning">Update Policy</button>
+            <a asp-action="ManagePolicies" asp-controller="Admin" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}

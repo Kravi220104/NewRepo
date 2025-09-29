@@ -1,0 +1,21 @@
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.csproj.AssemblyReference.cache
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.AssemblyInfoInputs.cache
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.AssemblyInfo.cs
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.csproj.CoreCompileInputs.cache
+C:\Users\2438779\source\PROJECTJYOTIMITTAL\ADM25DN010-InsurancePolicyManagementSystem\InsurancePolicyManagementSystems\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.sourcelink.json
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\bin\Debug\net8.0\InsurancePolicyManagementSystems.Service.deps.json
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\bin\Debug\net8.0\InsurancePolicyManagementSystems.Service.dll
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\bin\Debug\net8.0\InsurancePolicyManagementSystems.Service.pdb
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\bin\Debug\net8.0\InsurancePolicyManagementSystems.Repository.dll
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\bin\Debug\net8.0\InsurancePolicyManagementSystems.Repository.pdb
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.csproj.AssemblyReference.cache
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.AssemblyInfoInputs.cache
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.AssemblyInfo.cs
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.csproj.CoreCompileInputs.cache
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\Insuranc.8ED944C0.Up2Date
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.dll
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\refint\InsurancePolicyManagementSystems.Service.dll
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\InsurancePolicyManagementSystems.Service.pdb
+C:\Users\2438648\source\InsurancePolicyManagementSystems - Copy\InsurancePolicyManagementSystems.Service\obj\Debug\net8.0\ref\InsurancePolicyManagementSystems.Service.dll

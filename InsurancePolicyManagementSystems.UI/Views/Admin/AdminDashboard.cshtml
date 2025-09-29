@@ -1,0 +1,193 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin Page";
+}
+
+@section Styles {
+   
+    <style>
+        /* CSS Variables (Use your established colors) */
+        :root {
+            --color-admin-primary: #004d99; /* Deep Blue for Primary Actions */
+            --color-admin-secondary: #dc3545; /* Red for Critical/Claims */
+            --color-admin-success: #28a745; /* Green for Approved/Success */
+            --color-admin-warning: #ffc107; /* Yellow for Pending/Status */
+            --color-admin-info: #17a2b8; /* Cyan for General Info/Policies */
+            --color-background: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--color-background);
+        }
+        
+        /* Dashboard Title */
+        .dashboard-title {
+            font-size: 2.8rem;
+            color: var(--color-admin-primary);
+            font-weight: 800;
+        }
+
+        /* The Card Container Styling */
+        .dashboard-card {
+            height: 350px;
+            max-width: 320px; /* Slightly wider for better visual weight */
+            margin: 0 auto;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: #777;
+        }
+
+        /* --------------------------------- */
+        /* Color Overrides for Specific Cards */
+        /* --------------------------------- */
+        
+        /* Customer Management (Primary) */
+        .card-customer .card-icon { color: var(--color-admin-primary); background-color: #e6f0ff; }
+        .card-customer .card-title { color: var(--color-admin-primary); }
+        .card-customer .btn { border-color: var(--color-admin-primary); color: var(--color-admin-primary); }
+        .card-customer .btn:hover { background-color: var(--color-admin-primary); color: white; }
+
+        /* Policy Management (General Info) */
+        .card-policy .card-icon { color: var(--color-admin-info); background-color: #d8f3f8; }
+        .card-policy .card-title { color: var(--color-admin-info); }
+        .card-policy .btn { border-color: var(--color-admin-info); color: var(--color-admin-info); }
+        .card-policy .btn:hover { background-color: var(--color-admin-info); color: white; }
+
+        /* Policy Status (Pending/Warning) */
+        .card-status .card-icon { color: var(--color-admin-warning); background-color: #fff3cd; }
+        .card-status .card-title { color: var(--color-admin-warning); }
+        .card-status .btn { border-color: var(--color-admin-warning); color: var(--color-admin-warning); }
+        .card-status .btn:hover { background-color: var(--color-admin-warning); color: #343a40; }
+
+        /* Claims Processing (Action/Secondary Red) */
+        .card-claims-process .card-icon { color: var(--color-admin-secondary); background-color: #f8d7da; }
+        .card-claims-process .card-title { color: var(--color-admin-secondary); }
+        .card-claims-process .btn { border-color: var(--color-admin-secondary); color: var(--color-admin-secondary); }
+        .card-claims-process .btn:hover { background-color: var(--color-admin-secondary); color: white; }
+        
+        /* Admin Reports (Success/Green) */
+        .card-reports-admin .card-icon { color: var(--color-admin-success); background-color: #e9f7eb; }
+        .card-reports-admin .card-title { color: var(--color-admin-success); }
+        .card-reports-admin .btn { border-color: var(--color-admin-success); color: var(--color-admin-success); }
+        .card-reports-admin .btn:hover { background-color: var(--color-admin-success); color: white; }
+        
+    </style>
+}
+}
+
+
+
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5 dashboard-title"><i class="bi bi-person-workspace me-2"></i> Welcome, Administrator</h1>
+
+    <div class="row justify-content-center mb-5">
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-customer">
+                <div class="card-body text-center d-flex flex-column">
+                    <div>
+                        <i class="bi bi-people-fill card-icon mb-3"></i>
+                        <h5 class="card-title">Customer Management</h5>
+                        <p class="card-text">View,activate, or deactivate customer accounts across the system.</p>
+                    </div>
+                    <a asp-controller="Admin" asp-action="CustomerList" class="btn btn-outline-primary mt-3">Manage Customers</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-policy">
+                <div class="card-body text-center d-flex flex-column">
+                    <div>
+                        <i class="bi bi-journal-text card-icon mb-3"></i>
+                        <h5 class="card-title">Policy Catalog</h5>
+                        <p class="card-text">Create, manage, and modify all available insurance policies and templates.</p>
+                    </div>
+                    <a asp-controller="Admin" asp-action="ManagePolicies" class="btn btn-outline-info mt-3">Manage Policies</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5">
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-status">
+                <div class="card-body text-center d-flex flex-column">
+                    <div>
+                        <i class="bi bi-hourglass-split card-icon mb-3"></i>
+                        <h5 class="card-title">Pending Policies</h5>
+                        <p class="card-text">Review and approve or reject new customer policy applications.</p>
+                    </div>
+                    <a asp-controller="AdminReport" asp-action="PendingPolicies" class="btn btn-outline-warning mt-3">Review Applications</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-claims-process">
+                <div class="card-body text-center d-flex flex-column">
+                    <div>
+                        <i class="bi bi-exclamation-octagon card-icon mb-3"></i>
+                        <h5 class="card-title">Claims Processing</h5>
+                        <p class="card-text">Review and determine the outcome for all customer insurance claims.</p>
+                    </div>
+                    <a asp-controller="Claim" asp-action="MyClaims" class="btn btn-outline-danger mt-3">Process Claims</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-4">
+
+        <div class="col-md-5 col-lg-4 mb-4">
+            <div class="card dashboard-card card-reports-admin">
+                <div class="card-body text-center d-flex flex-column">
+                    <div>
+                        <i class="bi bi-bar-chart-fill card-icon mb-3"></i>
+                        <h5 class="card-title">System Reports</h5>
+                        <p class="card-text">View comprehensive analytics, policy history, and claims summaries.</p>
+                    </div>
+                    <a asp-controller="AdminReport" asp-action="Index" class="btn btn-outline-success mt-3">View Reports</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+}

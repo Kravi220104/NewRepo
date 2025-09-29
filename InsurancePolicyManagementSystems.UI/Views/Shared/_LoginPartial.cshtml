@@ -1,0 +1,28 @@
+﻿@using InsurancePolicyManagementSystems.Repository.Models
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Customer> SignInManager;
+<ul class="nav ms-auto align-items-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <form asp-controller="Customer" asp-action="Logout" method="post" class="d-inline">
+                <button type="submit" class="btn btn-link nav-link text-white p-0">Logout</button>
+                @Html.AntiForgeryToken()
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-controller="Customer" asp-action="Login">
+                Login
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" asp-controller="Customer" asp-action="Register">
+                Register
+            </a>
+        </li>
+    }
+</ul>
+

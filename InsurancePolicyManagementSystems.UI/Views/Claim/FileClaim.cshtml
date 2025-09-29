@@ -1,0 +1,48 @@
+﻿@* File: Views/Claim/FileClaim.cshtml *@
+@model InsurancePolicyManagementSystems.Service.DTO.ClaimDTO
+
+@{
+    ViewData["Title"] = $"File Claim for {ViewBag.PolicyName}";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-success mb-4">
+        <i class="bi bi-file-earmark-text me-2"></i> File a Claim
+    </h2>
+    <h4 class="text-center text-muted mb-4">Policy: @ViewBag.PolicyName (ID: @Model.PolicyRegistrationId)</h4>
+
+    <div class="card p-4 shadow">
+        <form asp-controller="Claim" asp-action="FileClaim" method="post">
+            <input type="hidden" asp-for="PolicyRegistrationId" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="IncidentTitle">Incident Title</label>
+                <input asp-for="IncidentTitle" class="form-control" placeholder="e.g., Car Accident, Hospitalization" required />
+                <span asp-validation-for="IncidentTitle" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="IncidentDate">Date of Incident</label>
+                <input asp-for="IncidentDate" type="date" class="form-control" required max="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                <span asp-validation-for="IncidentDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="RequestedAmount">Requested Claim Amount (INR)</label>
+                <input asp-for="RequestedAmount" type="number" class="form-control" step="0.01" min="1" required />
+                <span asp-validation-for="RequestedAmount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="Description">Detailed Description of Incident</label>
+                <textarea asp-for="Description" class="form-control" rows="5" required></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Submit Claim</button>
+            <a asp-action="AppliedPolicies" asp-controller="Policies" class="btn btn-outline-secondary w-100 mt-2">Cancel and Go Back</a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@* File: Views/Report/Index.cshtml *@
+@{
+    ViewData["Title"] = "My Reports Dashboard";
+}
+
+<style>
+    .report-card {
+        border-radius: 1rem;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        height: 250px; /* Slightly increased height to accommodate the button */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Space out content and button */
+        padding: 1.5rem;
+    }
+
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+    .card-content-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .card-title-custom {
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+</style>
+
+<h2 class="text-center text-primary mb-5">
+    <i class="bi bi-bar-chart-fill me-2"></i> My Policy Reports
+</h2>
+
+<div class="row justify-content-center">
+
+    @* === CARD 1: APPLIED POLICIES === *@
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card report-card bg-primary text-white shadow">
+
+            <div class="card-content-area">
+                <i class="bi bi-shield-fill-check card-icon"></i>
+                <h5 class="card-title card-title-custom">Applied Policies</h5>
+                <p class="card-text">View the status and details of all your active and submitted policies.</p>
+            </div>
+
+            @* BUTTON: Redirects to the Policy List page *@
+            <a asp-controller="Policies" asp-action="AppliedPolicies" class="btn btn-light mt-3">
+                View Details <i class="bi bi-arrow-right-circle-fill ms-2"></i>
+            </a>
+        </div>
+    </div>
+
+    @* === CARD 2: APPLIED CLAIMS === *@
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card report-card bg-success text-white shadow">
+
+            <div class="card-content-area">
+                <i class="bi bi-wallet-fill card-icon"></i>
+                <h5 class="card-title card-title-custom">Applied Claims</h5>
+                <p class="card-text">Track the progress and history of all claims filed under your policies.</p>
+            </div>
+
+            @* BUTTON: Redirects to the Claims List page (using the ReportController action) *@
+            <a asp-controller="Report" asp-action="AppliedClaims" class="btn btn-light mt-3">
+                View Details <i class="bi bi-arrow-right-circle-fill ms-2"></i>
+            </a>
+        </div>
+    </div>
+
+</div>

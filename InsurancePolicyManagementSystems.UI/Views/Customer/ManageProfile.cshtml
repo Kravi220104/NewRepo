@@ -1,0 +1,141 @@
+﻿@model InsurancePolicyManagementSystems.Service.DTO.ManageProfileDTO
+
+@{
+    ViewData["Title"] = "My Profile Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Ensure consistency with theme colors */
+    :root {
+        --color-primary: #004d99; /* Deep Blue */
+        --color-secondary: #28a745; /* Green */
+        --color-text-dark: #333;
+    }
+
+    .profile-details-card {
+        max-width: 650px;
+        margin: 50px auto;
+        padding: 40px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-top: 5px solid var(--color-secondary); /* Green accent top */
+    }
+
+        .profile-details-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px dashed #eee;
+    }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            margin-right: 15px;
+            width: 30px; /* fixed width for alignment */
+            text-align: center;
+        }
+
+        .info-item strong {
+            font-weight: 600;
+            color: var(--color-text-dark);
+            width: 120px; /* fixed width for label alignment */
+            flex-shrink: 0;
+        }
+
+    .info-value {
+        font-weight: 400;
+        color: #555;
+    }
+
+    .btn-update-profile {
+        background-color: var(--color-secondary);
+        border-color: var(--color-secondary);
+        font-weight: 600;
+        padding: 10px 25px;
+        transition: background-color 0.3s;
+    }
+
+        .btn-update-profile:hover {
+            background-color: #218838; /* Darker green */
+            border-color: #218838;
+        }
+
+    .btn-back-dashboard {
+        background-color: #6c757d; /* Gray color */
+        border-color: #6c757d;
+        color: white;
+        font-weight: 600;
+        padding: 10px 25px;
+        transition: background-color 0.3s;
+    }
+
+        .btn-back-dashboard:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+</style>
+
+<div class="container mt-5">
+
+    <div class="profile-details-card">
+
+        <h2 class="text-center"><i class="bi bi-person-badge me-2"></i> Your Profile Details</h2>
+
+        <div class="info-item">
+            <i class="bi bi-person-fill"></i>
+            <strong>Full Name:</strong>
+            <span class="info-value">@Model.Fullname</span>
+        </div>
+
+        <div class="info-item">
+            <i class="bi bi-envelope-fill"></i>
+            <strong>Email:</strong>
+            <span class="info-value">@Model.Email</span>
+        </div>
+
+        <div class="info-item">
+            <i class="bi bi-telephone-fill"></i>
+            <strong>Phone:</strong>
+            <span class="info-value">@Model.Phone</span>
+        </div>
+
+        <div class="info-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <strong>Address:</strong>
+            <span class="info-value">@Model.Address</span>
+        </div>
+
+
+        <div class="text-center mt-5">
+            <a asp-controller="Customer" asp-action="UpdateProfile" class="btn btn-update-profile me-3">
+                <i class="bi bi-pencil-square me-1"></i> Update Profile
+            </a>
+            <a asp-controller="Customer" asp-action="CustomerDashboard" class="btn btn-back-dashboard">
+                <i class="bi bi-speedometer2 me-1"></i> Back to Dashboard
+            </a>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

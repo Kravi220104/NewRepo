@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "FAQ & Support";
+}
+
+<style>
+    :root {
+        --color-primary: #004d99;
+        --color-secondary: #28a745;
+    }
+
+    .faq-section {
+        padding: 60px 20px;
+        background-color: #ffffff;
+    }
+
+    .faq-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+        .faq-header h1 {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 3rem;
+        }
+    /* Styling for the Accordion */
+    .accordion-item {
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .accordion-button {
+        color: var(--color-text-dark);
+        font-weight: 600;
+        background-color: #f0f8ff; /* Light blue background */
+        border-radius: 5px !important;
+        transition: background-color 0.2s;
+    }
+
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(0, 77, 153, 0.25);
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: var(--color-primary);
+            background-color: #e6f0ff;
+        }
+</style>
+
+<div class="faq-section">
+    <div class="container">
+        <div class="faq-header">
+            <h1>Frequently Asked Questions</h1>
+            <p class="lead text-muted mt-3">Find quick answers about policies, claims, and using our digital platform.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <h2 class="h4 mb-3 text-start text-secondary">1. Claims Process</h2>
+                <div class="accordion" id="claimsFaq">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                How long does it take for a claim to be processed?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#claimsFaq">
+                            <div class="accordion-body">
+                                Claim processing typically takes **5-7 business days** after the claim is filed. The status will update from 'Submitted' to 'Approved' or 'Rejected' once the Admin has reviewed all documentation.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Why was my claim rejected?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#claimsFaq">
+                            <div class="accordion-body">
+                                If your claim is rejected, please check the **Admin Comments** in your "My Filed Claims" history page. The reason for the decision, such as missing documentation or policy exclusion, will be provided there.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="h4 mb-3 mt-5 text-start text-secondary">2. Policy & System Access</h2>
+                <div class="accordion" id="policyFaq">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How do I view my current policies?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#policyFaq">
+                            <div class="accordion-body">
+                                After logging in, navigate to the **"My Policies"** or **"Applied Policies"** section in the navigation bar to see a list of all your active and pending registrations.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5 p-4 border rounded bg-light">
+                    Can't find your answer? <a href="/Home/Contact" class="text-primary fw-bold">Contact our Support Team</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

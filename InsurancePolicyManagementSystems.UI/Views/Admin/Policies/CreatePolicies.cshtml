@@ -1,0 +1,61 @@
+﻿@model InsurancePolicyManagementSystems.Service.DTO.CreatePoliciesDTO
+
+@{
+
+    ViewData["Title"] = "Create Policy";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2 class="text-center mb-4 text-success">➕ Create New Policy</h2>
+
+<div class="container mt-4">
+    <form asp-action="CreatePolicies" asp-controller="Admin" method="post">
+        <div class="mb-3">
+            <label asp-for="PolicyName" class="form-label">Policy Name</label>
+            <input asp-for="PolicyName" class="form-control" />
+            <span asp-validation-for="PolicyName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PolicyDuration" class="form-label">Policy Duration (Years)</label>
+            <input asp-for="PolicyDuration" class="form-control" type="number" min="1" />
+            <span asp-validation-for="PolicyDuration" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PlanType" class="form-label">Plan Type</label>
+            <select asp-for="PlanType" class="form-select">
+                <option value="">-- Select Plan --</option>
+                <option value="Basic">Basic</option>
+                <option value="Standard">Standard</option>
+                <option value="Premium">Premium</option>
+            </select>
+            <span asp-validation-for="PlanType" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="PolicyDescription" class="form-label">Description</label>
+            <input asp-for="PolicyDescription" class="form-control" />
+            <span asp-validation-for="PolicyDescription" class="text-danger"></span>
+        </div>
+
+        @* <div class="mb-3">
+            <label asp-for="AmountToBePaid" class="form-label">Amount to be Paid (₹)</label>
+            <input asp-for="AmountToBePaid" class="form-control" type="number" min="0" step="0.01" />
+            <span asp-validation-for="AmountToBePaid" class="text-danger"></span>
+        </div> *@
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-success">Save Policy</button>
+            <a asp-action="ManagePolicies" asp-controller="Admin" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+}
+

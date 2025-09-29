@@ -1,0 +1,66 @@
+﻿@* File: Views/AdminReport/AllCustomerPolicies.cshtml *@
+@model List<InsurancePolicyManagementSystems.Service.DTO.AllPolicyRegistrationDTO>
+
+@{
+    ViewData["Title"] = "All Policy Applications";
+}
+
+<h2 class="text-center mb-4 text-warning">
+    <i class="bi bi-list-check me-2"></i> All Customer Policy Applications
+</h2>
+
+<a asp-controller="AdminReport" asp-action="Index" class="btn btn-secondary mb-3">
+    <i class="bi bi-arrow-left"></i> Back to Reports
+</a>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">No policy applications found.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover policy-list-table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Reg. ID</th>
+                    <th>Customer Name</th>
+                    <th>Customer Email</th>
+                    <th>Policy Name</th>
+                    <th>Policy Type</th>
+                    <th>Plan Type</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    @* <th>Actions</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var policy in Model.OrderByDescending(p => p.ApplicationDate))
+                {
+                    <tr>
+                        <td>@policy.RegistrationId</td>
+                        <td>@policy.CustomerName</td>
+                        <td>@policy.CustomerEmail</td>
+                        <td>@policy.PolicyName</td>
+                        <td>@policy.PolicyType</td>
+                        <td>@policy.PlanType</td>
+                        <td>@policy.ApplicationDate.ToShortDateString()</td>
+                        <td>
+                            @* Dynamic Status Badge *@
+                            @{
+                                string badgeClass = policy.Status.ToLower() switch
+                                {
+                                    "approved" => "bg-success",
+                                    "rejected" => "bg-danger",
+                                    _ => "bg-warning text-dark"
+                                };
+                            }
+                            <span class="badge @badgeClass">@policy.Status</span>
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

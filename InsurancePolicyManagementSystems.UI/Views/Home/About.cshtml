@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "About Us - Our Mission";
+}
+
+<style>
+    /* Inherit root variables and base body styles from Index.cshtml */
+    :root {
+        --color-primary: #004d99;
+        --color-secondary: #28a745;
+        --color-background: #f8f9fa;
+        --color-text-dark: #333;
+    }
+
+    .about-section {
+        padding: 80px 20px;
+        background-color: var(--color-background);
+    }
+
+    .about-header {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+        .about-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+            .about-header h1::after {
+                content: '';
+                display: block;
+                width: 80px;
+                height: 4px;
+                background-color: var(--color-secondary);
+                margin: 10px auto 0;
+                border-radius: 2px;
+            }
+
+    .story-block {
+        display: flex;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+
+        .story-block img {
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+        }
+
+    .story-content {
+        padding: 0 40px;
+    }
+
+        .story-content h2 {
+            color: var(--color-text-dark);
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .story-content p {
+            line-height: 1.7;
+            color: #555;
+        }
+
+    .values-card {
+        text-align: center;
+        padding: 30px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        transition: all 0.3s;
+        height: 100%;
+        background-color: white;
+    }
+
+        .values-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 77, 153, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .values-card i {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 15px;
+        }
+
+        .values-card h4 {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+    /* Reverse layout on odd blocks */
+    .story-block:nth-child(even) .col-md-6:first-child {
+        order: 2;
+    }
+
+    .story-block:nth-child(even) .col-md-6:last-child {
+        order: 1;
+    }
+</style>
+
+<div class="about-section">
+    <div class="container">
+        <div class="about-header">
+            <h1>Our Story & Commitment</h1>
+            <p class="lead text-muted mt-3">Building trust through transparent and efficient insurance management.</p>
+        </div>
+
+        <div class="row story-block">
+            <div class="col-md-6">
+                <img src="https://source.unsplash.com/600x400/?mission,team" alt="Our Mission" />
+            </div>
+            <div class="col-md-6 story-content">
+                <h2>Our Mission: Digital Simplicity</h2>
+                <p>
+                    Founded on the belief that managing insurance should be simple and transparent, we created this platform to bridge the gap between policyholders and complex procedures. Our goal is to provide a seamless, digitized experience for applying for policies, filing claims, and receiving instant status updates, eliminating paperwork and uncertainty.
+                </p>
+                <p>
+                    We are dedicated to **efficiency** and **customer-centric design**, ensuring you spend less time on administration and more time living secured.
+                </p>
+            </div>
+        </div>
+
+        <div class="row story-block">
+            <div class="col-md-6">
+                <img src="https://source.unsplash.com/600x400/?technology,security" alt="Our Technology" />
+            </div>
+            <div class="col-md-6 story-content">
+                <h2>Technology Driving Trust</h2>
+                <p>
+                    Behind every policy and claim, there is a secure, modern infrastructure. We leverage **cutting-edge cloud technology** and rigorous data encryption to protect your sensitive information. Our system provides admins with clear, categorized data for swift policy approval and claim assessment, ensuring fast turnaround times.
+                </p>
+                <p>
+                    From automated validation to transparent status logs, our platform is designed for reliable performance and unwavering security.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-header mt-5">
+            <h2>Our Core Values</h2>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="values-card">
+                    <i class="bi bi-person-fill-lock"></i>
+                    <h4>Integrity</h4>
+                    <p>Upholding the highest standards of honesty and fairness in every transaction.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="values-card">
+                    <i class="bi bi-clock-history"></i>
+                    <h4>Efficiency</h4>
+                    <p>Committed to quick, paperless processing for both claims and policy applications.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="values-card">
+                    <i class="bi bi-lightbulb-fill"></i>
+                    <h4>Innovation</h4>
+                    <p>Continuously seeking better ways to simplify insurance management through technology.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
